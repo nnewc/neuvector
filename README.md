@@ -33,9 +33,9 @@ Harbor supports using Neuvector as an external image scanner.
 ### Configuration Steps
 
 1. Enable the registry adapter pod by setting `cve.adapter.enabled=true`
-2. By default, the registry adapter pod is confiured for HTTPS and you need to provide a TLS certificate via `cve.adapter.certificate` (Note: If you use this, set `cve.adapter.certificate.pemFile=tls.crt`)
+2. By default, the registry adapter pod is configured for HTTPS and you need to provide a TLS certificate via `cve.adapter.certificate` (Note: If you use this, set `cve.adapter.certificate.pemFile=tls.crt`) [example certificate](https://raw.githubusercontent.com/nnewc/neuvector-demo/main/adapter-certificate.yaml)
 3. If Harbor is running external to cluster, you will need to expose the registry adapter pod externally. Ingress can be configured with `cve.adapter.ingress`
-4. A secret of the form [basic-auth](https://kubernetes.io/docs/concepts/configuration/secret/#basic-authentication-secret) will need to be created and set via `cve.adapter.harbor.secretName`
+4. A secret of the form [basic-auth](https://kubernetes.io/docs/concepts/configuration/secret/#basic-authentication-secret) will need to be created and set via `cve.adapter.harbor.secretName` [example secret](https://raw.githubusercontent.com/nnewc/neuvector-demo/main/harbor-credentials.yaml)
 5. After those resources are created, log into Harbor and navigate to Administration -> Interrogation Services -> New Scanner 
 6. In the dialog box, enter the exposed `neuevector-registry-adapter` endpoint, the credentials found in the secret referenced by `cve.adapter.harbor.secretName`, then click Add.
 7. You should now have a Neuvector scanner configured in Harbor.
