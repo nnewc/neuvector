@@ -1,0 +1,32 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: adapter-tls-cert
+  namespace: cattle-neuvector-system
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: adapter-tls-cert
+  namespace: cattle-neuvector-system
+spec:
+  duration: 17520h # 2 years
+  subject:
+    organizations:
+      - NeuVector
+  isCA: true
+  commonName: neuvector
+  dnsNames:
+  - neuvector-service-registry-adapter.cattle-neuvector-system.svc.cluster.local
+  - neuvector-service-registry-adapter
+  - neuvector
+  secretName: adapter-tls-cert
+  usages:
+  - digital signature
+  - key encipherment
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: adapter-tls-cert
