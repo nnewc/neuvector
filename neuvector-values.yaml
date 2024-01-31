@@ -1,0 +1,27 @@
+controller:
+  federation:
+   managedsvc:
+     ingress:
+       enabled: true
+       host: neuvector-fed-managed.10.7.2.90.nip.io
+       tls: true
+     type: ClusterIP
+cve:
+  adapter:
+    certificate:
+      pemFile: tls.crt
+      secret: adapter-tls-cert
+    enabled: true
+    harbor:
+      secretName: harbor-credentials
+    ingress:
+      annotations:
+        cert-manager.io/issuer: adapter-tls-cert
+      enabled: true
+      host: neuvector-registry-adapter.10.7.2.90.nip.io
+      secretName: adapter-ingress
+      tls: true
+docker:
+  enabled: false
+k3s:
+  enabled: true
