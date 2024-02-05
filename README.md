@@ -14,7 +14,7 @@ This repo walks through how to setup federation and configure other capabilities
 2. On the cluster that you want to be the federation master, expose the `neuvector-svc-controller-fed-master` service externally.
 3. Login to the Neuvector Manager UI and click on the User account drop down -> Multiple Clusters
 4. Click Promote
-5. Enter the endpoint that you exposed in step 2 and click Submit. (Note: Your Primary Cluster will be `443` if you exposed via Ingress)
+5. Enter the endpoint that you exposed in step 2 and click Submit. (Note: Your Primary Cluster Port will be `443` if you exposed via Ingress)
 6. After the page reloads, go back in to Multiple Clusters and you should now see the cluster listed in the table. Under the Actions column, click Generate Token and copy the displayed token to your clipboard for future use.
 
 ### Managed cluster steps

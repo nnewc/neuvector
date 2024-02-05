@@ -1,6 +1,12 @@
 controller:
   federation:
-   managedsvc:
+    mastersvc:
+      ingress:
+        enabled: true
+        host: neuvector-fed-master.10.7.2.98.nip.io
+        tls: true
+      type: ClusterIP
+    managedsvc:
      ingress:
        enabled: true
        host: neuvector-fed-managed.10.7.2.90.nip.io
